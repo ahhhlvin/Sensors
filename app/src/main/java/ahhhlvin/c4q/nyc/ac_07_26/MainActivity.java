@@ -256,10 +256,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
         }
     }
 
-    @Override
-    public void onLocationChanged(Location location) {
-        handleNewLocation(location);
-    }
+
 
     private void handleNewLocation(Location location) {
         double latitude = location.getLatitude();
@@ -275,6 +272,8 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
 
     AsyncTask<Void, Void, Address> geocodeTask = new AsyncTask<Void, Void, Address>() {
+       
+        // Done on a separate thread
         @Override
         protected Address doInBackground(Void... params) {
             Address address = null;
@@ -291,6 +290,8 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
             return address;
         }
 
+
+        // Done on the Main/UI thread
         @Override
         protected void onPostExecute(Address address) {
             locationView.setText(address.getAddressLine(0) + ", " + address.getSubAdminArea() + " "
