@@ -150,6 +150,8 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
             }
         });
 
+
+        // Instantiating the Sensor Manager to activate accelerometer sensor listener in device
         mSensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
         Sensor mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(sensorEventListener, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
