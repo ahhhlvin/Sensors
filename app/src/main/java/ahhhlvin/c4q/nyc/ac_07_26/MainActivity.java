@@ -60,7 +60,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
     Button playBackButton;
     TextView locationView;
     ImageView photoView;
-    boolean isRecording = false;
+    boolean isNotRecording;
     int CAPTURE_IMAGE = 0;
     int CAPTURE_VIDEO = 1;
     ContentResolver contentResolver;
@@ -119,7 +119,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isRecording) {
+                if (isNotRecording = true) {
                     mediaRecorder = new MediaRecorder();
                     mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
                     mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
@@ -131,11 +131,11 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    isRecording = true;
+                    isNotRecording = false;
                 } else {
                     mediaRecorder.stop();
 //                    mediaRecorder.release();
-                    isRecording = false;
+                    isNotRecording = true;
 
                 }
             }
